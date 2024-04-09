@@ -77,6 +77,9 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
 
+    // Google Truth
+    testImplementation(libs.google.truth)
+
     implementation(project(":data"))
     implementation(project(":domain"))
 }

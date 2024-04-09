@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.devtoolsKsp)
     alias(libs.plugins.hilt)
     kotlin("kapt")
     id("kotlin-parcelize")

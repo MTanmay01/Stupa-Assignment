@@ -12,13 +12,13 @@ appcompat = "1.6.1"
 material = "1.11.0"
 jetbrainsKotlinJvm = "1.9.0"
 room = "2.6.1"
-ksp = "1.9.23-1.0.19"
 hilt = "2.51"
 datastore = "1.0.0"
 composeNav = "2.7.7"
 activityKtx = "1.8.2"
 hiltComposeNav = "1.2.0"
 coroutinesCore = "1.8.0"
+truth = "1.4.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,10 +52,11 @@ androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", ve
 
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore"}
 
+google-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
-devtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

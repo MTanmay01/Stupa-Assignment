@@ -14,7 +14,7 @@ fun SignInRoute(
     onSignInSuccessful: () -> Unit = {},
     onSignUp: () -> Unit = {}
 ) {
-    val state by viewModel.userFlow.collectAsState()
+    val state by viewModel.signInState.collectAsState()
 
     LaunchedEffect(state.user) {
         if (state.user != null) {

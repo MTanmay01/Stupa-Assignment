@@ -19,7 +19,9 @@ class UserAuthRepositoryImpl @Inject constructor(
 
     override suspend fun saveUser(user: User) = withContext(ioDispatcher) {
         require(user is DBUser) {
-            "UserDao only supports saving [DBUser] to the database"
+            "UserDao only supports saving [DBUser] to the database\n" +
+                    "Expected: ${DBUser::class.simpleName}\n" +
+                    "Received: ${user::class.simpleName}"
         }
         userDAO.addUser(user)
     }

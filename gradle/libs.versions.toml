@@ -19,6 +19,11 @@ activityKtx = "1.8.2"
 hiltComposeNav = "1.2.0"
 coroutinesCore = "1.8.0"
 truth = "1.4.2"
+mockitoCore = "5.11.0"
+mockitoKotlin = "5.2.1"
+mockk = "1.13.10"
+coroutinesTest = "1.8.0"
+turbine = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,8 +56,15 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore"}
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 
 google-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk"}
+
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

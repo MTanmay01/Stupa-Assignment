@@ -18,8 +18,8 @@ interface UserDAO {
     @Query("DELETE FROM user WHERE token=:token")
     suspend fun deleteUserWithToken(token: String)
 
-    @Query("SELECT * FROM user WHERE email_id=:emailId AND password=:passwordHash")
-    suspend fun getUser(emailId: String, passwordHash: String): DBUser?
+    @Query("SELECT * FROM user WHERE email_id=:emailId AND password=:password")
+    suspend fun getUser(emailId: String, password: String): DBUser?
 
     @Query("SELECT * FROM user WHERE token=:token")
     suspend fun getUserFromToken(token: Int): DBUser?

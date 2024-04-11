@@ -13,18 +13,17 @@ fun SignupRoute(
     viewmodel: AuthViewModel,
     prefManager: PreferencesManager
 ) {
-    val state by viewmodel.signUpFlow.collectAsState()
+    val state by viewmodel.signUpState.collectAsState()
 
     SignupUI(
         signUpInProcess = state.signUpInProcess,
         userAlreadyExists = state.userAlreadyExists,
         onSignup = {
             viewmodel.resetSignUpUIState()
-            viewmodel.saveUser(it, prefManager) { exists ->
+            viewmodel.signUp(it, prefManager) { exists ->
                 if (!exists)
                     onSignup()
             }
-//            prefManager.saveUserToken(it.token)
         },
         onSignIn = onSignIn
     )

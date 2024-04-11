@@ -4,9 +4,5 @@ import com.mtanmay.data.models.DBUser
 import com.mtanmay.domain.models.LocalUser
 
 fun DBUser.toLocalUser() = LocalUser(
-    username = username,
-    emailId = emailId,
-    phoneNumber = phoneNumber,
-    country = country,
-    mToken = token
+    username, emailId, phoneNumber, country, token
 )

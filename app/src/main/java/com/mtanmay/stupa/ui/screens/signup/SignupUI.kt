@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mtanmay.data.models.DBUser
+import com.mtanmay.domain.models.interfaces.User
 import com.mtanmay.stupa.ui.common.EmailTextField
 import com.mtanmay.stupa.ui.common.PasswordTextField
 import com.mtanmay.stupa.ui.theme.primaryDark
@@ -39,7 +40,7 @@ import com.mtanmay.stupa.utils.Validator
 @Composable
 fun SignupUI(
     modifier: Modifier = Modifier,
-    onSignup: (DBUser) -> Unit,
+    onSignup: (User) -> Unit,
     signUpInProcess: Boolean = false,
     userAlreadyExists: Boolean = false,
     onSignIn: () -> Unit = {}

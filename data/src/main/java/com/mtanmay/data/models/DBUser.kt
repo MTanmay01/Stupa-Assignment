@@ -14,23 +14,21 @@ data class DBUser(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    val username: String,
+    override val username: String,
 
     @ColumnInfo("email_id")
-    val emailId: String,
+    override val emailId: String,
 
     @ColumnInfo("password")
     val password: String,
 
     @ColumnInfo("phone_number")
-    val phoneNumber: String,
+    override val phoneNumber: String,
 
-    val country: String,
+    override val country: String,
 
     @ColumnInfo("token")
-    private val mToken: Int = (username + emailId + password + phoneNumber + country).hashCode() + (100..1000).random()
+    override val token: Int =
+        (username + emailId + password + phoneNumber + country).hashCode() + (100..1000).random()
 
-) : Parcelable, User {
-    override val token: Int
-        get() = mToken
-}
+) : Parcelable, User

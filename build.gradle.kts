@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.jetbrainsKotlinJvm) apply false
-    alias(libs.plugins.devtoolsKsp) apply false
 }
 buildscript {
     configurations.all {
@@ -15,3 +14,9 @@ buildscript {
         }
     }
 }
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+

@@ -23,24 +23,24 @@ class AuthViewModel @Inject constructor(
     private val userAuthRepository: IUserAuthRepository
 ) : ViewModel() {
 
-    private val _userFlow = MutableStateFlow(SignInUIState())
-    val userFlow: StateFlow<SignInUIState>
-        get() = _userFlow.asStateFlow()
+    private val _signInState = MutableStateFlow(SignInUIState())
+    val signInState: StateFlow<SignInUIState>
+        get() = _signInState.asStateFlow()
 
-    private val _signUpFlow = MutableStateFlow(SignUpUIState())
-    val signUpFlow: StateFlow<SignUpUIState>
-        get() = _signUpFlow.asStateFlow()
+    private val _signUpState = MutableStateFlow(SignUpUIState())
+    val signUpState: StateFlow<SignUpUIState>
+        get() = _signUpState.asStateFlow()
 
-    fun saveUser(user: User, mgr: PreferencesManager, onCompletion: (Boolean) -> Unit) {
+    fun signUp(user: User, mgr: PreferencesManager, onCompletion: (Boolean) -> Unit) {
         var exists = false
 
         viewModelScope.launch {
-            _signUpFlow.update { SignUpUIState().copy(signUpInProcess = true) }
+            _signUpState.update { SignUpUIState().copy(signUpInProcess = true) }
             delay(1000)
 
-            exists = userAuthRepository.userAlreadyExists((user as DBUser).emailId)
+            exists = userAuthRepository.userAlreadyExists(user.emailId)
 
-            _signUpFlow.update { SignUpUIState().copy(userAlreadyExists = exists) }
+            _signUpState.update { SignUpUIState().copy(userAlreadyExists = exists) }
 
             if (!exists) {
                 userAuthRepository.saveUser(user)
@@ -54,19 +54,19 @@ class AuthViewModel @Inject constructor(
 
     fun signIn(emailId: String, password: String) {
         viewModelScope.launch {
-            _userFlow.update { SignInUIState(loading = true) }
+            _signInState.update { SignInUIState(loading = true) }
             delay(500)
             val user = userAuthRepository.signIn(emailId, password) as? LocalUser
             if (user == null)
-                _userFlow.update { SignInUIState().copy(failed = true) }
+                _signInState.update { SignInUIState().copy(failed = true) }
             else {
-                _userFlow.update { SignInUIState().copy(user = user) }
+                _signInState.update { SignInUIState().copy(user = user) }
             }
         }
     }
 
-    fun resetSignInUIState() = _userFlow.update { SignInUIState() }
-    fun resetSignUpUIState() = _signUpFlow.update { SignUpUIState() }
+    fun resetSignInUIState() = _signInState.update { SignInUIState() }
+    fun resetSignUpUIState() = _signUpState.update { SignUpUIState() }
 
 
 }
